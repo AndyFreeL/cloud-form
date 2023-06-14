@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {FC,ReactNode} from 'react';
+import s from './MainLayout.module.scss'
 
-const MainLayout = () => {
+interface MainLayoutProps{
+    title?:string,
+    children:  ReactNode,
+    br?:string
+}
+
+const MainLayout:FC<MainLayoutProps> = ({children, br,title}) => {
     return (
-        <div>
-            
+        <div style={{borderRadius:br}} className={s.main}>
+            {children}
         </div>
     );
 };

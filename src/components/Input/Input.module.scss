@@ -1,0 +1,54 @@
+.input{
+  display: flex;
+  flex-direction: column;
+  //max-width: 400px;
+  position: relative;
+  &__count{
+    color: #666666;
+    display: flex;
+    justify-content: space-between;
+    &_red{
+      color: red;
+    }
+  }
+  &__label{
+    color:#333333;
+    line-height: 20px;
+    padding-bottom: 8px;
+    &:first-letter{
+      text-transform: uppercase;
+    }
+  }
+  &__field{
+    //height: 44px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    //outline: none;
+    padding: 12px;
+    transition: border-color .2s;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    line-height: 22px;
+    font-size: 14px;
+    flex: none;
+    &.error{
+      border: 1px solid red;
+      color:red;
+    }
+  }
+  &__textarea{
+    max-width: 100%;
+  }
+  &__helper{
+    //top: 78px;
+    bottom:-26px;
+    position: absolute;
+    padding-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    //color: rgba(0, 0, 0, 0.48);
+    color:red;
+  }
+}

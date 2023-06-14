@@ -1,0 +1,51 @@
+.wrapper{
+  position: absolute;
+  background: rgba(0, 0, 0, 0.16);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.content{
+  padding: 32px;
+  width: 460px;
+  height: 314px;
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  &__title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+    &.error{
+      justify-content: space-between;
+    }
+    span{
+      font-size: 20px;
+      font-weight: 600;
+    }
+    svg{
+      &:hover{
+        cursor: pointer;
+        border-radius: 50%;
+        background: rgba(185, 185, 185, 0.42);
+      }
+    }
+  }
+  &__image{
+    height: 132px;
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button{
+    text-align: center;
+    &.error{
+      text-align: end;
+    }
+  }
+}

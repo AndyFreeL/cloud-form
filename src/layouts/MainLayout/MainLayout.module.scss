@@ -1,1 +1,12 @@
-.wrapper{}
+.main{
+  margin-top: 24px;
+  width: 900px;
+  background: white;
+  border-radius: 12px 12px 0px 0px;
+  @media screen and (max-width: 900px) {
+    margin-top: 0;
+  width: 100vw;
+  }
+}
+
+
