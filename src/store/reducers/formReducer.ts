@@ -3,7 +3,7 @@ import {FormAction, FormActionTypes, FormState} from '../../types/form'
 const initialState: FormState = {
         nickname: '',
         name: '',
-        sername: '',
+        surname: '',
         phone: '',
         email: '',
         sex: '',

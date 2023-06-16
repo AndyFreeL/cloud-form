@@ -1,7 +1,7 @@
 export interface FormState {
         nickname: string,
         name: string,
-        sername: string,
+        surname: string,
         phone: string,
         email: string,
         sex: string,

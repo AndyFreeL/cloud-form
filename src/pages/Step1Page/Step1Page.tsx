@@ -25,28 +25,28 @@ const schema = yup.object().shape({
         .matches(/^[a-zA-Z-]*$/, "Name should not contain numbers or spec symbols")
         .required("Name is a required field")
         .max(50, 'Must be exactly 50 digits'),
-    sername: yup
+    surname: yup
         .string()
         .matches(/^[a-zA-Z-]*$/, "Sername should not contain numbers or spec symbols")
-        .matches(/^[a-zA-Z0-9!@#$%\\^&*)(+=._-]*$/, "Sername should not contain spec")
+        .matches(/^[a-zA-Z0-9!@#$%\\^&*)(+=._-]*$/, "Surname should not contain spec")
         .max(50, 'Must be exactly 50 digits')
         .required("Sername is a required field"),
 })
 
 
 const Step1Page = () => {
-    const{nickname,sername,name, sex}=useTypedSelector(state => state.form)
+    const{nickname,surname,name, sex}=useTypedSelector(state => state.form)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {register, handleSubmit, formState: {errors}} = useForm({
-        defaultValues:{nickname:nickname, sername:sername, name:name, sex:sex},
+        defaultValues:{nickname:nickname, surname:surname, name:name, sex:sex},
         mode: 'onBlur',
         resolver: yupResolver(schema)
     })
 
     const onSubmit = (data: {}) => {
         dispatch(setFormState(data))
-        navigate('/step2')
+        // navigate('/step2')
     }
 
     return (
@@ -76,13 +76,13 @@ const Step1Page = () => {
                         placeholder='Name'/>
                     </div>
                     <div className={s.input}><Input
-                        error={errors.sername && 'true'}
-                        helpertext={errors?.sername?.message?.toString()}
-                        id='field-sername'
+                        error={errors.surname && 'true'}
+                        helpertext={errors?.surname?.message?.toString()}
+                        id='field-surname'
                         type='text'
-                        {...register('sername')}
-                        label='sername'
-                        placeholder='Sername'/>
+                        {...register('surname')}
+                        label='surname'
+                        placeholder='Surname'/>
                     </div>
                     <div className={s.sex}>
                         <select
@@ -97,8 +97,8 @@ const Step1Page = () => {
                         </select>
                     </div>
                     <div className={s.buttons}>
-                        <Button variant='secondary' type='button' onClick={() => navigate(-1)}>Назад</Button>
-                        <Button id='button-next' type='submit'>Далее</Button>
+                        <Button variant='secondary' type='submit' onClick={() => navigate(-1)}>Назад</Button>
+                        <Button id='button-next' type='submit' onClick={() => navigate('/step2')}>Далее</Button>
                     </div>
                 </Form>
             </div>

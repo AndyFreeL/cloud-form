@@ -41,7 +41,6 @@ const Step2Page = () => {
 
     const onSubmit = (data: {}) => {
         dispatch(setFormState(data))
-        navigate('/step3')
     }
 
     return (
@@ -121,8 +120,8 @@ const Step2Page = () => {
                     </div>
 
                     <div className={s.buttons}>
-                        <Button variant='secondary' type='button' onClick={() => navigate(-1)}>Назад</Button>
-                        <Button id='button-next' type='submit'>Далее</Button>
+                        <Button variant='secondary' type='submit' onClick={() => navigate(-1)}>Назад</Button>
+                        <Button id='button-next' type='submit' onClick={() => navigate('/step3')}>Далее</Button>
                     </div>
                 </Form>
 

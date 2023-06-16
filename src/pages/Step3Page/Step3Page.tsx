@@ -25,12 +25,11 @@ const schema = yup.object().shape({
 const Step3Page = () => {
     const dispatch = useDispatch()
     const {postForm} = useActions()
-    const [showModal, setShowModal] = useState(false)
     const form=useTypedSelector(state => state.form)
-    const {status, error}=useTypedSelector(state => state.status)
+    const {status}=useTypedSelector(state => state.status)
     const navigate = useNavigate()
     const [count, setCount] = useState(0)
-    const {register, control, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues:{about:form.about},
         mode: 'all',
         resolver: yupResolver(schema)
@@ -38,7 +37,6 @@ const Step3Page = () => {
 
     const onSubmit = (data: {}) => {
         dispatch(setFormState(data))
-        postForm(form)
     }
 
     return (
@@ -63,8 +61,8 @@ const Step3Page = () => {
                         />
                     </div>
                     <div className={s.buttons}>
-                        <Button variant='secondary' type='button' onClick={() => navigate(-1)}>Назад</Button>
-                        <Button id='button-next' type='submit'>Отправить</Button>
+                        <Button variant='secondary' type='submit' onClick={() => navigate(-1)}>Назад</Button>
+                        <Button id='button-next' type='button' onClick={()=>postForm(form)}>Отправить</Button>
                     </div>
                 </Form>
             </div>
