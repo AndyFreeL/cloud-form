@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import Form from "../../components/Form/Form";
 import s from './Step1Page.module.scss'
@@ -38,15 +38,18 @@ const Step1Page = () => {
     const{nickname,surname,name, sex}=useTypedSelector(state => state.form)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {register, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}, getValues} = useForm({
         defaultValues:{nickname:nickname, surname:surname, name:name, sex:sex},
         mode: 'onBlur',
         resolver: yupResolver(schema)
     })
-
-    const onSubmit = (data: {}) => {
+    const onSubmit = (data:{}) => {
         dispatch(setFormState(data))
-        // navigate('/step2')
+        navigate('/step2')
+    }
+    const goToPreviousPage=()=>{
+        dispatch(setFormState(getValues()))
+        navigate(-1)
     }
 
     return (
@@ -97,8 +100,8 @@ const Step1Page = () => {
                         </select>
                     </div>
                     <div className={s.buttons}>
-                        <Button variant='secondary' type='submit' onClick={() => navigate(-1)}>Назад</Button>
-                        <Button id='button-next' type='submit' onClick={() => navigate('/step2')}>Далее</Button>
+                        <Button variant='secondary' type='button' onClick={()=> goToPreviousPage()}>Назад</Button>
+                        <Button id='button-next' type='submit'>Далее</Button>
                     </div>
                 </Form>
             </div>

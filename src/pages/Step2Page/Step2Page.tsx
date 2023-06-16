@@ -28,7 +28,7 @@ const Step2Page = () => {
 
 
 
-    const {register, control, handleSubmit, formState: {errors}} = useForm<FormValues>({
+    const {register, control, handleSubmit, getValues} = useForm<FormValues>({
         defaultValues: {radio: radio, checkbox: checkbox, advantages: advantages}
     })
 
@@ -41,6 +41,11 @@ const Step2Page = () => {
 
     const onSubmit = (data: {}) => {
         dispatch(setFormState(data))
+        navigate('/step3')
+    }
+    const goToPreviousPage=()=>{
+        dispatch(setFormState(getValues()))
+        navigate(-1)
     }
 
     return (
@@ -120,8 +125,8 @@ const Step2Page = () => {
                     </div>
 
                     <div className={s.buttons}>
-                        <Button variant='secondary' type='submit' onClick={() => navigate(-1)}>Назад</Button>
-                        <Button id='button-next' type='submit' onClick={() => navigate('/step3')}>Далее</Button>
+                        <Button variant='secondary' type='button' onClick={() => goToPreviousPage()}>Назад</Button>
+                        <Button id='button-next' type='submit'>Далее</Button>
                     </div>
                 </Form>
 
